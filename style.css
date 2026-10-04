@@ -1,0 +1,1060 @@
+/*متغیر های پایه*/
+:root{
+    --bg:#0a0a0c;
+    --panel:#111114;
+    --text: #f5f5f5;
+    --muted: #9a9aa2;
+    --bmw : #1c69d4;  /*رنگ bmw*/
+    --mb-silver: #cfd2d6;  /*رنگ بنز*/
+    --accent: var(--bmw); /*ایجاد رنگ فعال که با js تغییر میکنه*/
+    --mitsubishi: #e60012;
+    --lambo: #ddb321;
+    --ferrari: #ff5639;
+}
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+    letter-spacing: 0.5px;
+}
+
+button{
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/*=======================brand select=======================*/
+
+.brand-section{
+    padding: 100px 48px;
+    text-align: center;
+}
+
+.brand-section h2{
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 48px;
+}
+/*=====اضافه کردن انیمیشن تغییر رنگ به متن انتخاب برند=====*/
+.brand-section h2:hover {
+    background: linear-gradient(90deg, #1c69d4, #cfd2d6, #e2231a, #1c69d4);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: brandShine 3s linear infinite;
+    cursor: default;
+}
+
+@keyframes brandShine {
+    to {
+        background-position: 300% 0;
+    }
+}
+/*=====================================*/
+.brand-buttons{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    gap: 24px 48px;
+}
+
+.brand-btn{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: none;
+    padding: 12px 20px;
+    opacity: 0.45;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.brand-btn:hover {
+    opacity: 0.75;
+}
+
+.brand-btn.active {
+    opacity: 1;
+}
+
+.brand-btn::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 2px;
+    height: 2px;
+    background: var(--bmw);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.brand-btn[data-brand="mercedes"]::after {
+    background: var(--mb-silver);
+}
+
+.brand-btn[data-brand="mitsubishi"]::after{
+    background: var(--mitsubishi);
+}
+.brand-btn[data-brand="lamborghini"]::after{
+    background: var(--lambo);
+}
+
+.brand-btn:hover::after {
+    transform: scaleX(1);
+}
+
+.brand-logo{
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.brand-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+} 
+
+.brand-name{
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+/*وقتی دکمه‌ی یک برند انتخاب‌شده است، اسم برندش به رنگ همان برند دربیاید*/
+.brand-btn[data-brand="bmw"].active .brand-name {
+    color: var(--bmw);
+}
+
+.brand-btn[data-brand="mercedes"].active .brand-name {
+    color: var(--mb-silver);
+}
+
+.brand-btn[data-brand="mitsubishi"].active .brand-name{
+    color: var(--mitsubishi);
+}
+.brand-btn[data-brand="lamborghini"].active .brand-name{
+    color: var(--lambo);
+}
+/*------------------------------------------------------------------------------*/
+.brand-slogan{
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.divider {
+    width: 1px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.15);
+}
+/*========================COLLECTIONS======================*/
+
+.collection{
+    padding: 100px 48px 120px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.collection-head{
+    margin-bottom: 56px;
+}
+
+.collection-sub{
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--accent);
+    transition: color 0.4s ease;
+}
+.collection-sub::after{
+    content: "";
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--accent);
+    margin: 14px auto 0;
+    transition: background 0.4s ease;
+}
+
+.viewer{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/*فلش های تغیر ماشین*/
+
+.arrow{
+    position: relative;
+    flex-shrink: 0;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.15);
+    display: flex;
+    font-size: 26px;
+    line-height: 1;
+    margin-top: 100px;
+    color: var(--muted);
+    align-items: center;
+    justify-content: center;
+    transition: border-color .25s, color .25s, transform .25s;
+    z-index: 10;
+}
+
+
+.arrow:active{
+    transform: scale(0.94);
+}
+
+.arrow:hover{
+    color: var(--text);
+    border-color: var(--accent);
+    transform: scale(1.08);
+}
+
+/*========================js classs=========================== */
+/*ردیف و حالت ماشین ها*/
+
+.thumb{
+    position: relative;
+    flex-shrink: 0;
+    text-align: center;
+    cursor: pointer;
+    width: 150px;
+    opacity: 0.4;
+    filter: brightness(0.55) grayscale(0.2);
+    transform: translateY(6px) scale(0.92);
+    transition: opacity .45s, filter .45s, transform .45s, width .45s;
+}
+
+.thumb-row{
+    position: relative;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    min-height: 300px;
+    padding: 20px 0;
+}
+
+.thumb:hover{
+    opacity: 0.7;
+    filter: brightness(0.8);
+}
+
+
+/* سایه‌ی روی زمین */
+.thumb-img-wrap{
+    position: relative;
+}
+
+.thumb-img-wrap::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    width: 70%;
+    height: 14px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,.65) 0%, transparent 75%);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.thumb img{
+    width: 100%;
+    display: block;
+    filter: drop-shadow(0 12px 18px rgba(0,0,0,.6));
+    position: relative;
+    z-index: 2;
+}
+
+.thumb-name{
+    display: block;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.thumb-year{
+    display: block;
+    margin-top: 4px;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+}
+
+/*بزرک تر بودن ماشین روی استیج*/
+.thumb.stage .thumb-name{
+    font-size:22px;
+    letter-spacing: 2px;
+}
+.thumb.stage .thumb-year{
+    font-size: 11px;
+}
+
+/*نمایش ماشین روی استیج و کوچک شدن ماشین های کناری*/
+.thumb.stage{
+    width: 400px;
+    opacity: 1;
+    filter: none;
+    transform: translateY(-8px) scale(1);
+}
+.thumb.stage .thumb-name::after{ /* خط زیر اسم */
+    content: "";
+    display: block; width: 60px; height: 2px;
+    background: var(--accent);
+    margin: 10px auto 0;
+}
+/*پرتو نور دور ماشین روی استیج*/
+.thumb.stage .thumb-img-wrap::before{
+    content: "";
+    position: absolute; top: -10%; left: 8%;
+    width: 3px; height: 105%;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255,255,255,.85) 45%,
+        rgba(255,255,255,.85) 55%,
+        transparent 100%);
+    filter: blur(4px);
+    transform: rotate(7deg);
+}
+
+/*پرتو نور سمت راست*/
+
+.thumb.stage .light-beam-right{
+    position: absolute;
+    top: -10%; right: 8%;
+    width: 3px; height: 105%;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(255,255,255,.85) 45%,
+        rgba(255,255,255,.85) 55%,
+        transparent 100%);
+    filter: blur(4px);
+    transform: rotate(-7deg);
+    opacity: 0.85;
+}
+
+/*رنگ و حاله پشت استیج*/
+.thumb.stage .stage-glow{
+    position: absolute; left: 50%; top: 45%;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent) 35%, transparent) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/*=====================کالگشن پایینی=====================*/
+/*باکس مشخصات فنی*/
+.stage-panel{
+    max-width: 1200px;
+    margin: 56px auto 0;
+    background: var(--panel);
+    gap: 24px;
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 36px;
+}
+
+/*اطلاعات داخل باکس برای ماشین*/
+
+.detail-box{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.detail-item{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+    border-left: 1px solid rgba(255,255,255,.08);
+    white-space: nowrap;
+    text-align: left;
+}
+
+.detail-item:first-child{
+    padding-left: 0;
+    border-left: none;
+}
+
+.detail-item svg{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    flex-shrink: 0;
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    border-radius: 50%;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.detail-item .d-value{
+    display: block;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: .5px;
+}
+.detail-item .d-label{
+    display: block;
+    margin-top: 4px;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase; 
+    color: var(--muted);
+}
+
+.btn-view-details{
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,.15);
+    color: var(--text);
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: border-color .3s, background .3s;
+}
+.btn-view-details:hover{
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+/*=================افکت ورود ماشین روی استیج===============*/
+/* بعدی: از راست میاد */
+.thumb-row[data-dir="1"]{ --from: 160px;}
+/* قبلی: از چپ میاد */
+.thumb-row[data-dir="-1"]{ --from: -160px;}
+@keyframes carEnter{
+    0%{
+        opacity: 0;
+        transform: translate(var(--from, 0px), 40px) scale(.8);
+        filter: blur(16px) drop-shadow(0 12px 18px rgba(0,0,0,.6));
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+        filter: blur(0) drop-shadow(0 12px 18px rgba(0,0,0,.6));
+    }
+}
+.thumb.stage img{
+    animation: carEnter 1s cubic-bezier(.16,.84,.3,1) backwards;
+}
+
+/* سایه‌ی زمین باز میشه */
+@keyframes shadowIn{
+    0%{ 
+    opacity: 0; 
+    transform: translateX(-50%) scaleX(.3); }
+    100%{ 
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1); }
+}
+
+.thumb.stage .thumb-img-wrap::after{
+    animation: shadowIn 1s ease-out backwards;
+}
+
+/* پرتوهای نور از بالا کشیده میشن */
+@keyframes beamIn{
+    0%{ opacity: 0; transform: rotate(var(--rot)) scaleY(0); }
+    100%{ opacity: .85; transform: rotate(var(--rot)) scaleY(1); }
+}
+.thumb.stage .thumb-img-wrap::before{
+    --rot: 7deg;
+    transform-origin: top;
+    animation: beamIn .8s .35s ease-out backwards;
+}
+.thumb.stage .light-beam-right{
+    --rot: -7deg;
+    transform-origin: top;
+    animation: beamIn .8s .35s ease-out backwards;
+}
+
+/* هاله‌ی پشت ماشین باز میشه و بعدش آروم نفس می‌کشه */
+@keyframes glowIn{
+    0%{ opacity: 0; transform: translate(-50%, -50%) scale(.4); }
+    100%{ opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes glowPulse{
+    0%, 100%{ opacity: 1; }
+    50%{ opacity: .65; }
+}
+.thumb.stage .stage-glow{
+    animation: glowIn 1s ease-out backwards, glowPulse 4s 1s ease-in-out infinite;
+}
+
+/* اسم و سال و خط زیرش */
+@keyframes textUp{
+    from{ opacity: 0; transform: translateY(14px); letter-spacing: 6px; }
+}
+@keyframes lineGrow{
+    from{ width: 0; }
+}
+.thumb.stage .thumb-name,
+.thumb.stage .thumb-year{
+    animation: textUp .7s .3s ease-out backwards;
+}
+.thumb.stage .thumb-name::after{
+    animation: lineGrow .6s .7s ease-out backwards;
+}
+
+/* ماشین‌های کناری آروم میان بالا */
+@keyframes sideIn{
+    from{ opacity: 0; transform: translateY(30px) scale(.85); }
+}
+.thumb:not(.stage){
+    animation: sideIn .7s .15s ease backwards;
+}
+
+/* آیتم‌های مشخصات یکی‌یکی ظاهر میشن */
+@keyframes itemIn{
+    from{ opacity: 0; transform: translateY(12px); }
+}
+.detail-item{ animation: itemIn .5s ease-out backwards; }
+.detail-item:nth-child(2){ animation-delay: .1s; }
+.detail-item:nth-child(3){ animation-delay: .2s; }
+.detail-item:nth-child(4){ animation-delay: .3s; }
+.detail-item:nth-child(5){ animation-delay: .4s; }
+
+/*================متنهای هیروسکشن================*/
+html{ scroll-behavior:smooth; }
+body{
+    overflow-x:hidden;
+    max-width:100vw;
+}
+
+.vh{
+    position:relative;
+    width:100%;
+    height:100vh;
+    min-height:720px;
+    overflow:hidden;
+    background:#0a0a0b;
+    font-family:'Archivo',sans-serif
+}
+
+.vh-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 60%;
+    pointer-events:none
+}
+
+.vh-overlay{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:linear-gradient(180deg,rgba(8,8,10,0.55) 0%,rgba(8,8,10,0.15) 30%,rgba(8,8,10,0.25) 55%,rgba(8,8,10,0.92) 100%)
+}
+
+.vh-nav{
+    position:relative;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    gap:42px;
+    padding:34px 56px
+}
+
+.vh-nav a{
+    font-size:14px;
+    font-weight:500;
+    color:rgba(255,255,255,0.82);text-decoration:none
+}
+
+.vh-nav a:hover{color:#fff}
+.vh-nav a.active{
+    color:#fff;
+    border-bottom:2px solid #fff;
+    padding-bottom:3px
+}
+
+.vh-giant{
+    position:absolute;
+    top:92px;
+    left:0;width:100%;
+    text-align:center;
+    z-index:2;
+    font-weight:800;
+    line-height:0.9;
+    letter-spacing:-0.03em;
+    white-space:nowrap;
+    font-size:13.3vw;
+    background:linear-gradient(180deg,#ffffff 55%,#b8b8bd 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    color:transparent
+}
+
+.vh-copy{
+    position:absolute;
+    left:56px;
+    bottom:56px;
+    z-index:3;
+    max-width:620px
+}
+
+.vh-copy h1{
+    color:#fff;
+    font-weight:600;
+    font-size:clamp(38px,5.8vw,66px);
+    line-height:0.98;
+    letter-spacing:-0.02em
+}
+
+.vh-copy p{
+    color:rgba(255,255,255,0.82);
+    font-size:15px;
+    font-weight:400;
+    line-height:1.5;
+    max-width:480px;
+    margin-top:18px
+}
+/*=================footer================*/
+.site-footer{
+    --f-blue:#2f7bff;
+    --f-cyan:#4aa3ff;
+    --f-line:rgba(70,150,255,.28);
+    position: relative;
+    overflow: hidden;
+    color:#e8edf6;
+    font-family:'Archivo',sans-serif;
+    background:
+        radial-gradient(900px 320px at 8% 0, rgba(30,100,255,.35), transparent 70%),
+        linear-gradient(#050c1b,#02060d);
+}
+
+.site-footer::before{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--f-blue),transparent);
+    box-shadow:0 0 14px var(--f-blue);
+}
+
+.site-footer .f-ico{
+    width:22px;
+    height:22px;
+    fill:none; stroke:currentColor;
+    stroke-width:1.6;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+}
+
+.f-main{
+    display:grid;
+    grid-template-columns:minmax(0, 2.1fr) minmax(0, .95fr) minmax(0, 1.15fr) minmax(0, 1.35fr);
+    gap:20px;
+    max-width:1600px;
+    margin:0 auto;
+    padding:70px 40px 40px;
+    align-items: stretch;
+}
+
+/*==============footer brand==============*/
+.f-brand{ 
+    display:flex;
+    gap:16px;
+    align-items:center;
+    align-self: center;
+}
+
+.f-logo{
+    width: clamp(110px, 10vw, 240px);
+    flex-shrink:0;
+    filter:drop-shadow(0 0 14px rgba(47,123,255,.7));
+}
+
+.f-word{
+    font-size: clamp(36px, 3.6vw, 64px);
+    font-weight:800;
+    font-style:italic;
+    letter-spacing:4px;
+    line-height:1;
+    background:linear-gradient(#fff,#8d9bb3);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+
+.f-tag{
+    margin-top:14px;
+    font-size:clamp(10px, .85vw, 15px);
+    letter-spacing:.22em;
+    white-space: nowrap;
+    color:#c9d6ea;
+}
+.f-rule{
+    display:block;
+    width:50px;
+    height:3px;
+    border-radius:2px;
+    margin:16px 0;
+    background:linear-gradient(90deg,var(--f-blue),transparent);
+}
+.f-desc{
+    color:#a9c2e6;
+    font-size: clamp(13px, 1vw, 16px);
+    line-height:1.8;
+    max-width:440px;
+    margin:0;
+}
+/*=================گوشه های پنل===============*/
+.f-panel{
+    --cut: clamp(18px, 2vw, 30px);
+    position: relative; isolation: isolate;
+    padding: clamp(22px, 2.4vw, 34px) clamp(20px, 2.2vw, 40px) clamp(22px, 2.2vw, 32px);
+    transition: filter .3s;
+}
+
+.f-panel::before,
+.f-panel::after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+}
+.f-panel::before{
+    inset:0;
+    background:var(--f-line);
+}
+.f-panel::after{
+    inset:1px;
+    background:linear-gradient(160deg,#07122a,#030a16);
+}
+/*--------چرخش نور دور باکس فوتر-----------*/
+@property --f-angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes f-spin{
+    to{ --f-angle: 360deg; }
+}
+
+.f-panel{ transition: filter .3s; }
+
+.f-panel:hover{
+    filter: drop-shadow(0 0 14px color-mix(in srgb, var(--accent, #1c69d4) 55%, transparent));
+}
+.f-panel:hover::before{
+    background:
+        conic-gradient(from var(--f-angle), transparent 0 55%, var(--accent, #1c69d4) 90%, #fff 100%),
+        var(--f-line);
+    animation: f-spin 2.6s linear infinite;
+}
+.f-panel:hover::after{ inset: 2px; }
+/*--------------------------------------------*/
+.f-title{
+    margin:0;
+    font-size: clamp(13px, 1.1vw, 20px);
+    font-weight:700;
+    letter-spacing:.18em;
+    white-space: nowarp;
+}
+.f-title::after{
+    content:"";
+    display:block;
+    width:52px;
+    height:4px;
+    border-radius:2px;
+    margin-top:14px;
+    background:linear-gradient(90deg,var(--f-blue),var(--f-cyan));
+}
+/*------------------links---------------*/
+.f-links{
+    list-style:none;
+    margin:22px 0 0;
+    padding:0;
+}
+.f-links a{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: clamp(8px, .8vw, 11px) 0;
+    color:#fff;
+    text-decoration:none;
+    font-size:clamp(14px, 1.2vw, 18px);
+    transition:color .2s, padding .2s;
+}
+.f-links a::after{
+    content:"›";
+    color:var(--f-cyan);
+    font-size:26px;
+    line-height:1;
+}
+.f-links a:hover{
+    color:var(--f-cyan);
+    padding-left:6px;
+}
+/*---------------------کادر ایکن های راه های ارتباطی--------------------*/
+.f-box{
+    flex:0 0 auto;
+    width:clamp(42px, 3.3vw, 56px);
+    height: clamp(42px, 3.3vw, 56px);
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    color:#fff;
+    text-decoration:none;
+    border:1px solid rgba(74,163,255,.6);
+    background:rgba(20,70,160,.18);
+    box-shadow:0 0 14px rgba(47,123,255,.3);
+    transition:transform .2s, box-shadow .2s;
+}
+
+.f-box .f-ico{
+    width:clamp(20px, 1.8vw, 26px);
+    height: clamp(20px, 1.8vw, 26px);
+}
+a.f-box:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 22px rgba(47,123,255,.7);
+}
+/*عوض شدن رنگ ایکن های تلگرام و گیت هاب با هاور کردن روی انها*/
+.f-social .f-box{
+    transition: transform .2s, box-shadow .2s, background .25s, color .25s, border-color .25s;
+}
+
+/* تلگرام: آبی */
+.f-social .f-tg:hover{
+    background:#27a7e7; border-color:#27a7e7; color:#fff;
+    box-shadow:0 0 22px rgba(39,167,231,.8);
+}
+/* گیت‌هاب: زرد */
+.f-social .f-gh:hover{
+    background:#f5c518; border-color:#f5c518; color:#111;
+    box-shadow:0 0 22px rgba(245,197,24,.8);
+}
+/* لینکدین: آبی تیره */
+.f-social .f-in:hover{
+    background:#0a3d91; border-color:#0a3d91; color:#fff;
+    box-shadow:0 0 22px rgba(10,61,145,.9);
+}
+/*--------contact-----------*/
+.f-contact{
+    list-style:none;
+    margin:24px 0 0;
+    padding:0;
+    display:grid;
+    gap:18px;
+}
+.f-contact li{
+    display:flex;
+    gap: clamp(10px, 1vw, 16px);
+    align-items:center;
+}
+
+.f-contact b{
+    display:block;
+    font-weight:500;
+    font-size: clamp(13px, 1.1vw, 19px);
+    overflow-wrap: anywhere;
+}
+
+.f-contact span:not(.f-box){
+    color:var(--f-cyan);
+    font-size: clamp(12px, 1vw, 16px);
+}
+/*-------------------شبکه ها ----------------*/
+.f-social{
+    display:flex;
+    flex-wrap:wrap; 
+    gap:14px; 
+    margin-top:24px; 
+}
+.f-news-title{ 
+    margin-top: 30px 0 16px;
+    padding-top: 34px;
+    margin-bottom: 18px;
+    font-size: clamp(11px, .95vw, 19px);
+    font-weight: 600;
+    letter-spacing: .14em;
+    line-height: 1.5;
+}
+.f-news{
+    display:flex; 
+    align-items:center; 
+    padding:4px;
+    border:1px solid rgba(74,163,255,.6); 
+    border-radius:999px;
+    background:rgba(10,30,70,.35);
+}
+.f-news input{
+    flex:1; 
+    min-width:0; 
+    padding:0 20px;
+    background:transparent;
+    border:0; 
+    outline:0; 
+    color:#fff; 
+    font:inherit;
+}
+.f-news input::placeholder{ 
+    color:#cfe0ff; 
+}
+.f-news button{
+    flex:0 0 50px; 
+    width:50px; 
+    height:50px; 
+    border:0; 
+    border-radius:50%;
+    display:grid; 
+    place-items:center; 
+    color:#fff; 
+    cursor:pointer;
+    background:linear-gradient(135deg,#2f7bff,#1b56d6);
+    box-shadow:0 0 16px rgba(47,123,255,.7);
+}
+/*================ریسپانسیو================*/
+/*لپ تاپ های کوچک*/
+@media (max-width: 1300px){
+    .thumb{ width: 120px; }
+    .thumb.stage{ width: 340px; }
+    .thumb-row{ gap: 16px; }
+}
+
+/* تبلت */
+@media (max-width: 900px){
+    .collection{ padding: 70px 24px 90px; }
+    .brand-section{ padding: 70px 24px; }
+
+    .thumb{ width: 110px; }
+    .thumb.stage{ width: 300px; }
+    .thumb-row{ gap: 16px; min-width: 0; }
+
+    .stage-panel{
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px;
+    }
+    .detail-box{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 12px;
+    }
+    .detail-item{
+        padding: 0;
+        border-left: none;
+        white-space: normal;
+    }
+    .btn-view-details{ width: 100%; }
+}
+/*=========RESPONSIVE============*/
+/* موبایل */
+@media (max-width: 600px){
+    /* هیرو */
+    .vh{ height: 100svh; min-height: 560px; }
+    .vh-nav{ padding: 20px; gap: 22px; }
+    .vh-nav a{ font-size: 13px; }
+    .vh-giant{ top: 64px; }
+    .vh-copy{ left: 20px; right: 20px; bottom: 32px; }
+    .vh-copy h1{ font-size: clamp(32px, 9vw, 44px); }
+    .vh-copy p{ font-size: 14px; margin-top: 12px; }
+
+    /* انتخاب برند */
+    .brand-section{ padding: 56px 16px; }
+    .brand-section h2{ margin-bottom: 28px; letter-spacing: 3px; }
+    .brand-buttons{
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+}
+
+    .brand-btn{ padding: 8px 10px; gap: 10px; }
+    .brand-logo{ width: 36px; height: 36px; }
+    .brand-name{ font-size: 14px; }
+    .brand-slogan{ display: none; }
+    .divider{ display: none; }
+
+    /* کالکشن: فقط ماشین وسط نمایش داده میشه */
+    .collection{ padding: 56px 12px 72px; }
+    .collection-head{ margin-bottom: 32px; }
+    .viewer{ gap: 6px; }
+    .thumb:not(.stage){ display: none; }
+    .thumb.stage{ width: 100%; max-width: 300px; }
+    .thumb-row{ min-height: 200px; }
+    .thumb.stage .thumb-name{ font-size: 18px; }
+    .thumb.stage .stage-glow{ width: 220px; height: 220px; }
+    .arrow{ width: 36px; height: 36px; font-size: 22px; margin-top: 70px; }
+
+    /* پنل مشخصات */
+    .stage-panel{ margin-top: 32px; padding: 20px 16px; }
+    .detail-box{ grid-template-columns: 1fr 1fr; }
+    .detail-item svg{ width: 34px; height: 34px; padding: 8px; }
+    .detail-item .d-value{ font-size: 15px; }
+}
+/*--------------footer responsive-------------*/
+/* ریسپانسیو */
+@media (max-width: 1100px){
+    .f-main{ grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .f-brand{ grid-column: 1 / -1; }
+}
+@media (max-width: 700px){
+    .f-main{ grid-template-columns: minmax(0, 1fr); padding: 50px 20px 30px; }
+    .f-brand{ flex-direction: column; }
+    .f-logo{ width: 180px; }
+    .f-bar{ flex-direction: column; align-items: center; text-align: center; }
+    .f-trust, .f-legal{ flex-wrap: wrap; justify-content: center; }
+    .f-trust li, .f-legal li{ border-left: 0; padding: 6px 12px; }
+}
+
+    .f-brand{ flex-direction:column; }
+    .f-logo{ width:180px; }
+    .f-word{ font-size:44px; }
+    .f-panel{ padding:30px 24px; }
+    .f-bar{
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    flex-wrap: wrap;
+    gap: 18px 0; 
+    padding: 26px 5%;
+    border-top: 1px solid rgba(74,163,255,.7);
+    box-shadow: 0 -6px 24px -6px rgba(47,123,255,.8);
+    background: rgba(2,6,13,.85);
+}
+    .f-trust, .f-legal{ flex-wrap:wrap; justify-content:center; }
+    .f-trust li, .f-legal li{ border-left:0; padding:6px 12px; }
+}
