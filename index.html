@@ -18,7 +18,7 @@
         <div class="vh-overlay"></div>
         <nav class="vh-nav">
             <a href="#vhero" class="active">Home</a>
-            <a href="#">About</a>
+            <a href="#" id="navAbout" data-about>About</a>
             <a href="#brand-section">Cars</a>
             <a href="# Contact" id="navContact">Contact</a>
         </nav>
@@ -32,47 +32,50 @@
     <section class="brand-section" id="brand-section">
         <h2>CHOOSE YOUR BRAND</h2>
         <div class="brand-buttons">
-        <button class="brand-btn active" data-brand="BMW">
-            <img src="bmw-7 (1).svg" alt="" class="brand-logo">
-            <div class="brand-text">
-                <span class="brand-name">BMW</span>
-                <span class="brand-slogan">THE ULTIMATE DRIVING MACHINE</span>
-            </div>    
+            <button class="brand-btn" data-brand="mitsubishi">
+                <img src="mitsubishi-1.svg" alt="" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">MITSUBISHI</span>
+                    <span class="brand-slogan">DRIVE YOUR AMBITION</span>
+                </div>
         </button>
-            
-        <div class="divider"></div>
-        <button class="brand-btn" data-brand="mercedes">
+
+            <button class="brand-btn active" data-brand="BMW">
+                <img src="bmw-7 (1).svg" alt="" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">BMW</span>
+                    <span class="brand-slogan">THE ULTIMATE DRIVING MACHINE</span>
+                </div>
+            </button>
+            <button class="brand-btn" data-brand="dodge">
+                <img src="dodge-3.svg" alt="" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">DODGE</span>
+                    <span class="brand-slogan">POWERFUL</span>
+                </div>
+            </button>
+            <button class="brand-btn" data-brand="mercedes">
                 <img src="mercedes-benz-9.svg" alt="" class="brand-logo">
                 <div class="brand-text">
                     <span class="brand-name">MERCEDES-BENZ</span>
                     <span class="brand-slogan">THE BEST OR NOTHING</span>
-                </div>    
-        </button>
-
-        <div class="divider"></div>
-        <button class="brand-btn" data-brand="mitsubishi">
-            <img src="mitsubishi-1.svg" alt="" class="brand-logo">
-            <div class="brand-text">
-                <span class="brand-name">MITSUBISHI</span>
-                <span class="brand-slogan">DRIVE YOUR AMBITION</span>
-            </div>
-        </button>
-        <div class="divider"></div>
-        <button class="brand-btn" data-brand="lamborghini">
-            <img src="lamborghini.svg" alt="" class="brand-logo">
-            <div class="brand-text">
-                <span class="brand-name">LAMBORGHINI</span>
-                <span class="brand-slogan">EXPECT THE UNEXPECTED</span>
-            </div>
-        </button>
-        <div class="divider"></div>
-        <button class="brand-btn" data-brand="ferrari">
-            <img src="ferrari-6.svg" alt="" class="brand-logo">
-            <div class="brand-text">
-                <span class="brand-name">FERRARI</span>
-                <span class="brand-slogan">ESSERE FERRARI</span>
-            </div>
-        </button>
+                </div>
+            </button>
+            <button class="brand-btn" data-brand="lamborghini">
+                <img src="lamborghini.svg" alt="" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">LAMBORGHINI</span>
+                    <span class="brand-slogan">EXPECT THE UNEXPECTED</span>
+                </div>
+            </button>
+            <button class="brand-btn" data-brand="ferrari">
+                <img src="ferrari-6.svg" alt="" class="brand-logo">
+                <div class="brand-text">
+                    <span class="brand-name">FERRARI</span>
+                    <span class="brand-slogan">ESSERE FERRARI</span>
+                </div>
+            </button>
+        </div>
     </section>
     <!--=======colectin========-->
     <section class="collection">
@@ -107,7 +110,7 @@
             </svg>
             <!--============brand footer==========-->
             <div class="f-brand-text">
-                <div class="f-word">NIVAD CORP</div>
+                <a class="f-word" href="https://www.nivadcorp.ir/" target="_blank" rel="noopener">NIVAD CORP</a>
                 <div class="f-tag">THE ULTIMATE WEB SITEs</div>
                 <span class="f-rule"></span>
                 <p class="f-desc">From iconic classics to modern legends, we put the world's finest cars in your hands. Book in minutes, drive with confidence.</p>
@@ -119,7 +122,7 @@
             <ul class="f-links">
                 <li><a href="#vhero">Home</a></li>
                 <li><a href="#brand-section">CARS</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#" data-about>About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>

@@ -56,11 +56,11 @@ const CARS = {
         accent:"#ddb321",
         defaultIndex:4,
         models:[
-            {name:"MIURA", sub:"P400 SV", year:"1971_1973", img:"cars/lb-miura.png",
+            {name:"MIURA", sub:"P400 SV", year:"1971_1973", img:"cars/miura.png",
                 specs:{engine:"3.9L\nV12", hp:"385 HP\n@ 7850 RPM", trans:"5 SPEED\nMANUAL", top:"290 KM/H\nTOP SPEED", accel:"5.5 S\n0 - 100 KM/H"}},
-            {name:"COUNTACH", sub:"QV", year:"1985_1990", img:"cars/lb-countach.png",
+            {name:"COUNTACH", sub:"QV", year:"1985_1990", img:"cars/countach.png",
                 specs:{engine:"5.2L\nV12", hp:"455 HP\n@ 7000 RPM", trans:"5 SPEED\nMANUAL", top:"295 KM/H\nTOP SPEED", accel:"4.9 S\n0 - 100 KM/H"}},
-            {name:"DIABLO", sub:"VT", year:"1990_2001", img:"cars/lb-diablo.png",
+            {name:"DIABLO", sub:"VT", year:"1990_2001", img:"cars/diablo.png",
                 specs:{engine:"5.7L\nV12", hp:"492 HP\n@ 7000 RPM", trans:"5 SPEED\nMANUAL", top:"325 KM/H\nTOP SPEED", accel:"4.5 S\n0 - 100 KM/H"}},
             {name:"MURCIÉLAGO", sub:"LP640", year:"2006_2010", img:"cars/murcielago.png",
                 specs:{engine:"6.5L\nV12", hp:"631 HP\n@ 8000 RPM", trans:"6 SPEED\nMANUAL", top:"340 KM/H\nTOP SPEED", accel:"3.4 S\n0 - 100 KM/H"}},
@@ -71,18 +71,35 @@ const CARS = {
     ferrari:{
         label:"FERRARI COLLECTION",
         accent:"#ff2800",
-        defaultIndex:2,
+        defaultIndex:0,
         models:[
-            {name:"250 GTO", sub:"", year:"1962_1964", img:"cars/ferrari-250gto.png",
-                specs:{engine:"3.0L\nV12", hp:"300 HP\n@ 7500 RPM", trans:"5 SPEED\nMANUAL", top:"280 KM/H\nTOP SPEED", accel:"6.1 S\n0 - 100 KM/H"}},
-            {name:"TESTAROSSA", sub:"", year:"1984_1996", img:"cars/ferrari-testarossa.png",
+            {name:"laferari", sub:"", year:"2013_2016", img:"cars/laferrari.png",
+                specs:{engine:"6.3L\nV12", hp:"800 HP\n@ 9250 RPM", trans:"7 SPEED\nMANUAL", top:"380 KM/H\nTOP SPEED", accel:"3 S\n0 - 100 KM/H"}},
+            {name:"TESTAROSSA", sub:"", year:"1984_1996", img:"cars/testarossa.png",
                 specs:{engine:"4.9L\nFLAT-12", hp:"390 HP\n@ 6300 RPM", trans:"5 SPEED\nMANUAL", top:"290 KM/H\nTOP SPEED", accel:"5.2 S\n0 - 100 KM/H"}},
             {name:"F40", sub:"", year:"1987_1992", img:"cars/ferrari-f40.png",
                 specs:{engine:"2.9L\nTWIN-TURBO V8", hp:"478 HP\n@ 7000 RPM", trans:"5 SPEED\nMANUAL", top:"324 KM/H\nTOP SPEED", accel:"4.2 S\n0 - 100 KM/H"}},
-            {name:"ENZO", sub:"", year:"2002_2004", img:"cars/ferrari-enzo.png",
+            {name:"ENZO", sub:"", year:"2002_2004", img:"cars/enzo.png",
                 specs:{engine:"6.0L\nV12", hp:"651 HP\n@ 7800 RPM", trans:"6 SPEED\nSEMI-AUTO", top:"350 KM/H\nTOP SPEED", accel:"3.4 S\n0 - 100 KM/H"}},
             {name:"458", sub:"ITALIA", year:"2009_2015", img:"cars/ferrari-458.png",
                 specs:{engine:"4.5L\nV8", hp:"562 HP\n@ 9000 RPM", trans:"7 SPEED\nDUAL-CLUTCH", top:"325 KM/H\nTOP SPEED", accel:"3.4 S\n0 - 100 KM/H"}}
+        ]
+    },
+        dodge:{
+        label:"DODGE COLLECTION",
+        accent:"#7d7f84",
+        defaultIndex:4,
+        models:[
+            {name:"CHALLENGER", sub:"R/T HEMI", year:"1970", img:"cars/RT.png",
+                specs:{engine:"7.0L\nHEMI V8", hp:"425 HP\n@ 5000 RPM", trans:"4 SPEED\nMANUAL", top:"200 KM/H\nTOP SPEED", accel:"5.6 S\n0 - 100 KM/H"}},
+            {name:"RAM", sub:"1500 TRX", year:"2021_2024", img:"cars/ram.png",
+                specs:{engine:"6.2L\nSUPERCHARGED V8", hp:"702 HP\n@ 6000 RPM", trans:"8 SPEED\nAUTOMATIC", top:"245 KM/H\nTOP SPEED", accel:"4.5 S\n0 - 100 KM/H"}},
+            {name:"VIPER", sub:"ACR", year:"1992_2017", img:"cars/vipar.png",
+                specs:{engine:"8.4L\nV10", hp:"645 HP\n@ 6200 RPM", trans:"6 SPEED\nMANUAL", top:"285 KM/H\nTOP SPEED", accel:"3.3 S\n0 - 100 KM/H"}},
+            {name:"CHARGER", sub:"SRT HELLCAT", year:"2015_2023", img:"cars/charger.png",
+                specs:{engine:"6.2L\nSUPERCHARGED V8", hp:"707 HP\n@ 6000 RPM", trans:"8 SPEED\nAUTOMATIC", top:"327 KM/H\nTOP SPEED", accel:"3.7 S\n0 - 100 KM/H"}},
+            {name:"CHALLENGER", sub:"DEMON 170", year:"2023", img:"cars/demon.png",
+                specs:{engine:"6.2L\nSUPERCHARGED V8", hp:"1025 HP\n@ 6400 RPM", trans:"8 SPEED\nAUTOMATIC", top:"350 KM/H\nTOP SPEED", accel:"1.6 S\n0 - 100 KM/H"}}
         ]
     },
 };
@@ -191,7 +208,7 @@ function prev(){
 
 nextBtn.addEventListener("click", next);
 prevBtn.addEventListener("click", prev);
-
+/*-------------------اسکرول شدن به بخش کلکسیون هر ماشین با کلیک برند مورد نظر-----------*/
 document.querySelectorAll(".brand-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         document.querySelectorAll(".brand-btn").forEach(b => b.classList.remove("active"));
@@ -199,8 +216,13 @@ document.querySelectorAll(".brand-btn").forEach(btn => {
         brand = btn.dataset.brand.toLowerCase();
         stageIndex = CARS[brand].defaultIndex;
         render();
+
+        // اسکرول نرم به بخش استیج و مشخصات
+        document.querySelector(".collection-head")
+            .scrollIntoView({ behavior: "smooth", block: "start" });
     });
 });
+
 
 render();
 
@@ -225,3 +247,12 @@ if (navContact) {
         window.scrollTo({ top, behavior: "smooth" });
     });
 }
+//وصل شدن دکمه  about به متن نیواد کورپ
+// کلیک روی About: اسکرول نرم به متن NIVAD CORP تو فوتر
+document.querySelectorAll("[data-about]").forEach(link => {
+    link.addEventListener("click", e => {
+        e.preventDefault();
+        document.querySelector(".f-word")
+            .scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+});

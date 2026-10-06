@@ -4,12 +4,13 @@
     --panel:#111114;
     --text: #f5f5f5;
     --muted: #9a9aa2;
-    --bmw : #1c69d4;  /*رنگ bmw*/
-    --mb-silver: #cfd2d6;  /*رنگ بنز*/
-    --accent: var(--bmw); /*ایجاد رنگ فعال که با js تغییر میکنه*/
+    --bmw : #1c69d4;
+    --mb-silver: #cfd2d6;  
+    --accent: var(--bmw); 
     --mitsubishi: #e60012;
     --lambo: #ddb321;
     --ferrari: #ff5639;
+    --dodge: #7d7f84;
 }
 
 *{
@@ -63,21 +64,22 @@ button{
 /*=====================================*/
 .brand-buttons{
     display: grid;
-    grid-template-columns: auto auto auto;
-    align-items: center;
-    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
     justify-items: center;
-    gap: 24px 48px;
+    gap: 40px 48px;
 }
 
 .brand-btn{
     position: relative;
     display: flex;
     align-items: center;
-    gap: 16px;
+    flex-direction: column;
+    gap: 14px;
     background: transparent;
     border: none;
-    padding: 12px 20px;
+    padding: 12px 20px 16px;
     opacity: 0.45;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -110,8 +112,17 @@ button{
 .brand-btn[data-brand="mitsubishi"]::after{
     background: var(--mitsubishi);
 }
+
 .brand-btn[data-brand="lamborghini"]::after{
     background: var(--lambo);
+}
+
+.brand-btn[data-brand="ferrari"]::after{
+    background: var(--ferrari);
+}
+
+.brand-btn[data-brand="dodge"]::after{
+    background: var(--dodge);
 }
 
 .brand-btn:hover::after {
@@ -119,8 +130,8 @@ button{
 }
 
 .brand-logo{
-    width: 56px;
-    height: 56px;
+    width: 72px;
+    height: 72px;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -128,8 +139,8 @@ button{
 .brand-text{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
 } 
 
 .brand-name{
@@ -154,6 +165,12 @@ button{
 .brand-btn[data-brand="lamborghini"].active .brand-name{
     color: var(--lambo);
 }
+.brand-btn[data-brand="ferrari"].active .brand-name{
+    color: var(--ferrari);
+}
+.brand-btn[data-brand="dodge"].active .brand-name{
+    color: var(--dodge);
+}
 /*------------------------------------------------------------------------------*/
 .brand-slogan{
     font-size: 10px;
@@ -177,6 +194,7 @@ button{
 
 .collection-head{
     margin-bottom: 56px;
+    scroll-margin-top: 40px;
 }
 
 .collection-sub{
@@ -718,6 +736,47 @@ body{
     color:transparent;
 }
 
+/*----------------انمیشن متن نیواد کورپ--------------*/
+
+/* انیمیشن متن NIVAD CORP: نبض (بزرگ و کوچک) + درخشش + برق نور */
+a.f-word{
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    transform-origin: left center;
+    background: linear-gradient(100deg, #8d9bb3 0%, #fff 40%, #9fdcff 50%, #fff 60%, #8d9bb3 100%);
+    background-size: 250% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fWordPulse 2.4s ease-in-out infinite,
+               fWordShine 3.5s linear infinite;
+}
+
+a.f-word:hover{
+    animation-duration: 1.2s, 2s;
+}
+
+@keyframes fWordPulse{
+    0%, 100%{
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px rgba(47,123,255,.35));
+    }
+    50%{
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 20px rgba(47,123,255,.95));
+    }
+}
+
+@keyframes fWordShine{
+    from{ background-position: 200% 0; }
+    to{   background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    a.f-word{ animation: none; }
+}
+/*------------------------------------------------------*/
 
 .f-tag{
     margin-top:14px;
@@ -998,8 +1057,8 @@ a.f-box:hover{
     .brand-section{ padding: 56px 16px; }
     .brand-section h2{ margin-bottom: 28px; letter-spacing: 3px; }
     .brand-buttons{
-        grid-template-columns: 1fr 1fr;
-        gap: 16px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
 }
 
     .brand-btn{ padding: 8px 10px; gap: 10px; }
@@ -1010,7 +1069,10 @@ a.f-box:hover{
 
     /* کالکشن: فقط ماشین وسط نمایش داده میشه */
     .collection{ padding: 56px 12px 72px; }
-    .collection-head{ margin-bottom: 32px; }
+    .collection-head{
+        margin-bottom: 32px;
+        scroll-margin-top: 40px;
+}
     .viewer{ gap: 6px; }
     .thumb:not(.stage){ display: none; }
     .thumb.stage{ width: 100%; max-width: 300px; }
