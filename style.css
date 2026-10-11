@@ -772,10 +772,6 @@ a.f-word:hover{
     from{ background-position: 200% 0; }
     to{   background-position: -100% 0; }
 }
-
-@media (prefers-reduced-motion: reduce){
-    a.f-word{ animation: none; }
-}
 /*------------------------------------------------------*/
 
 .f-tag{
